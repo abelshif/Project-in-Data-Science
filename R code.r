@@ -101,7 +101,7 @@ tau_hat =   opt_grad$par[2:(k1+1)]
 omega_hat = opt_grad$par[k1+2]
 gamma_hat = opt_grad$par[(k1+3):(k1+k1+2)]
 theta_hat = opt_grad$par[k1+k1+3]
-cat("", "Parameter estimates(MLE)", c(alpha_hat, tau_hat, omega_hat, gamma_hat, theta_hat), sep = "\n") # nolint
+cat("", "Parameter estimates", c(alpha_hat, tau_hat, omega_hat, gamma_hat, theta_hat), "", sep = "\n") # nolint
 #print(c(alpha_hat, tau_hat, omega_hat, gamma_hat, theta_hat))
 
 ### real estimates ####
@@ -111,8 +111,9 @@ gamma_hat = gamma_hat
 rho_hat = sqrt(theta_hat^2/(1+theta_hat^2))
 sigma_v_t_hat = 1/((omega_hat)^2*sqrt(1-rho_hat^2))
 
-cat("","Real estimates", c(beta_hat, gamma_hat, rho_hat, sigma_u_t_hat, sigma_v_t_hat), sep = "\n")
+cat("","Real estimates", c(beta_hat, gamma_hat, rho_hat, sigma_u_t_hat, sigma_v_t_hat), "", sep = "\n")
 #print(c(beta_hat, gamma_hat, rho_hat, sigma_u_t_hat, sigma_v_t_hat))
+
 ### parameter estimates for 500 replicates ####
 result = matrix(0,500,9)
 x1 = sample(1:3, N, replace=TRUE)
@@ -177,16 +178,16 @@ gamma_hat_i = res[,(k1+1):(k1+k1)]
 rho_hat_i = res[,k1+k1+1]
 sigma_u_t_hat_i = res[,k1+k1+2]
 sigma_v_t_hat_i = res[,k1+k1+3]
-#print(c(beta_hat_i, gamma_hat_i, rho_hat_i, sigma_u_t_hat_i, sigma_v_t_hat_i))
+print(c(beta_hat_i, gamma_hat_i, rho_hat_i, sigma_u_t_hat_i, sigma_v_t_hat_i))
 
-### Testing bias of estimates for 500 replictaes ####
+### Testing bias of real estimates for 500 replictaes ####
 colMeans(beta_hat_i)-beta
 colMeans(gamma_hat_i)- gamma
 mean(rho_hat_i)- rho
 mean(sigma_u_t_hat_i)- sigma_u_t
 mean(sigma_v_t_hat_i)- sigma_v_t
 
-### Testing variance of estimates for 500 replicates ####
+### Testing variance of real estimates for 500 replicates ####
 apply(beta_hat_i, 2, var)
 apply(gamma_hat_i, 2, var)
 var(rho_hat_i)

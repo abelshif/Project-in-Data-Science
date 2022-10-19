@@ -101,7 +101,7 @@ tau_hat =   opt_grad$par[2:(k1+1)]
 omega_hat = opt_grad$par[k1+2]
 gamma_hat = opt_grad$par[(k1+3):(k1+k1+2)]
 theta_hat = opt_grad$par[k1+k1+3]
-cat("", "Parameter estimates(MLE)", c(alpha_hat, tau_hat, omega_hat, gamma_hat, theta_hat), sep = "\n") # nolint
+cat("", "Parameter estimates", c(alpha_hat, tau_hat, omega_hat, gamma_hat, theta_hat), "", sep = "\n") # nolint
 #print(c(alpha_hat, tau_hat, omega_hat, gamma_hat, theta_hat))
 
 ### real estimates ####
@@ -111,8 +111,9 @@ gamma_hat = gamma_hat
 rho_hat = sqrt(theta_hat^2/(1+theta_hat^2))
 sigma_v_t_hat = 1/((omega_hat)^2*sqrt(1-rho_hat^2))
 
-cat("","Real estimates", c(beta_hat, gamma_hat, rho_hat, sigma_u_t_hat, sigma_v_t_hat), sep = "\n")
+cat("","Real estimates", c(beta_hat, gamma_hat, rho_hat, sigma_u_t_hat, sigma_v_t_hat), "", sep = "\n")
 #print(c(beta_hat, gamma_hat, rho_hat, sigma_u_t_hat, sigma_v_t_hat))
+
 ### parameter estimates for 500 replicates ####
 result = matrix(0,500,9)
 x1 = sample(1:3, N, replace=TRUE)
