@@ -60,5 +60,5 @@ gamma0 = gammahat
 theta0 = rhohat/a
 
 ### initial values ####
-cat("", "OLS estimates", c(alpha0, tau0, omega0, gamma0, theta0), "", sep = "\n")
-#print(c(alpha0, tau0, omega0, gamma0, theta0))
+cat("", "Initial values", sep = "\n")
+print(c(alpha0, tau0, omega0, gamma0, theta0))
